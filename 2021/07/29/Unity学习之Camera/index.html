@@ -1,0 +1,323 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Unity学习之Camera | 落雪のBlog</title><meta name="author" content="zj970"><meta name="copyright" content="zj970"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="摄像机(Camera)（Unity2018.4.3f1） — 参数详解根据项目使用的渲染管线，unity 在Camera Inspector 中显示不同的属性。  通用渲染管线（URP） 高清渲染管线（HDRP） 内置渲染管线   Clear Flags:	确定将清除屏幕的哪些部分，使用多个摄像机来绘制不同游戏对象的情况。每个摄像机在渲染其视图时都会存储颜色和深度信息。屏幕中未绘制的部分为空，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity学习之Camera">
+<meta property="og:url" content="https://www.serendipity.fit/2021/07/29/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8BCamera/index.html">
+<meta property="og:site_name" content="落雪のBlog">
+<meta property="og:description" content="摄像机(Camera)（Unity2018.4.3f1） — 参数详解根据项目使用的渲染管线，unity 在Camera Inspector 中显示不同的属性。  通用渲染管线（URP） 高清渲染管线（HDRP） 内置渲染管线   Clear Flags:	确定将清除屏幕的哪些部分，使用多个摄像机来绘制不同游戏对象的情况。每个摄像机在渲染其视图时都会存储颜色和深度信息。屏幕中未绘制的部分为空，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg">
+<meta property="article:published_time" content="2021-07-29T04:53:29.000Z">
+<meta property="article:modified_time" content="2024-07-29T04:59:37.739Z">
+<meta property="article:author" content="zj970">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg"><link rel="shortcut icon" href="https://www.bing.com/images/search?view=detailV2&ccid=huHclsGl&id=7F919E2195F90B62626DC69F0CF880B354D6FB06&thid=OIP.huHclsGl94FVgLfjfHIv3AAAAA&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.86e1dc96c1a5f7815580b7e37c722fdc%3frik%3dBvvWVLOA%252bAyfxg%26riu%3dhttp%253a%252f%252fbpic.588ku.com%252felement_pic%252f00%252f89%252f91%252f6556ee891156fc3.jpg%26ehk%3dzvfPzYh1t%252b9%252bgofVbZ1A0%252bGBk3KrrBMnzLkuaFWGIqA%253d%26risl%3d%26pid%3dImgRaw%26r%3d0&exph=260&expw=260&q=%e5%8d%9a%e5%ae%a2%e7%bd%91%e7%ab%99%e5%9b%be%e6%a0%87&simid=608046827163756575&FORM=IRPRST&ck=E0755331E72FB4731B7DD4195628F295&selectedIndex=7"><link rel="canonical" href="https://www.serendipity.fit/2021/07/29/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8BCamera/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Unity学习之Camera',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2024-07-29 12:59:37'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-tags"></i><span> 标签</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/notes"><i class="fa-fw fas fa-tags"></i><span> 笔记</span></a></li><li><a class="site-page child" href="/tags/life"><i class="fa-fw fas fa-tags"></i><span> 人生</span></a></li><li><a class="site-page child" href="/tags/originality"><i class="fa-fw fas fa-tags"></i><span> 原创</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/Android"><i class="fa-fw fas fa-folder-open"></i><span> Android</span></a></li><li><a class="site-page child" href="/categories/AndroidTV"><i class="fa-fw fas fa-folder-open"></i><span> AndroidTV</span></a></li><li><a class="site-page child" href="/categories/Framework"><i class="fa-fw fas fa-folder-open"></i><span> Framework</span></a></li><li><a class="site-page child" href="/categories/Unity"><i class="fa-fw fas fa-folder-open"></i><span> Unity</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog-info"><a href="/" title="落雪のBlog"><span class="site-name">落雪のBlog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-tags"></i><span> 标签</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/notes"><i class="fa-fw fas fa-tags"></i><span> 笔记</span></a></li><li><a class="site-page child" href="/tags/life"><i class="fa-fw fas fa-tags"></i><span> 人生</span></a></li><li><a class="site-page child" href="/tags/originality"><i class="fa-fw fas fa-tags"></i><span> 原创</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/Android"><i class="fa-fw fas fa-folder-open"></i><span> Android</span></a></li><li><a class="site-page child" href="/categories/AndroidTV"><i class="fa-fw fas fa-folder-open"></i><span> AndroidTV</span></a></li><li><a class="site-page child" href="/categories/Framework"><i class="fa-fw fas fa-folder-open"></i><span> Framework</span></a></li><li><a class="site-page child" href="/categories/Unity"><i class="fa-fw fas fa-folder-open"></i><span> Unity</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Unity学习之Camera</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-29T04:53:29.000Z" title="发表于 2021-07-29 12:53:29">2021-07-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-29T04:59:37.739Z" title="更新于 2024-07-29 12:59:37">2024-07-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Unity/">Unity</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Unity学习之Camera"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><meta name="referrer" content="no-referrer"/>
+
+<h1 id="摄像机-Camera"><a href="#摄像机-Camera" class="headerlink" title="摄像机(Camera)"></a>摄像机(Camera)</h1><p>（Unity2018.4.3f1）</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/0aa8392b3676a019132cc403789829a2.jpeg" alt="在这里插入图片描述">—</p>
+<h2 id="参数详解"><a href="#参数详解" class="headerlink" title="参数详解"></a>参数详解</h2><p>根据项目使用的渲染管线，unity 在Camera Inspector 中显示不同的属性。</p>
+<ol>
+<li><font color=green>通用渲染管线（URP）</font></li>
+<li><font color=green>高清渲染管线（HDRP）</font></li>
+<li><font color=green>内置渲染管线</font></li>
+</ol>
+<ul>
+<li><p><strong>Clear Flags</strong>:	确定将清除屏幕的哪些部分，使用多个摄像机来绘制不同游戏对象的情况。每个摄像机在渲染其视图时都会存储颜色和深度信息。屏幕中未绘制的部分为空，默认情况下将显示天空盒(Skybox)。使用多个摄像机时，每个摄像机都会在缓存区中存储自己的颜色和深度信息，随着每个摄像机渲染而累积越来越多数据。场景中的任何特定摄像机渲染其视图时，可以设置<strong>Clear Flags</strong> 来清除不同的缓冲区信息集合，有以下四个选择：</p>
+<ul>
+<li><font color=red>Skybox</font><ul>
+<li>这是默认设置。屏幕中任意空白部分将显示当前摄像机的天空盒。默认为Lighting窗口(菜单–&gt;Window–&gt;Rendering–&gt;Lighting Settings)中选择的天空盒。随后，它将恢复为背景颜色（<strong>Background Color</strong>）。也可以将Skybox组件添加到摄像机。创建新的天空盒</li>
+</ul>
+</li>
+<li><font color=red>Solid color</font><ul>
+<li>屏幕的任何空白部分都将显示为当前相机的<strong>背景颜色</strong></li>
+</ul>
+</li>
+<li><font color=red>Depth only</font><ul>
+<li>Depth表示渲染深度，可以理解为摄像机显示顺序，Depth值越大，渲染越靠后，在场景中优先显示，当多个摄像机Depth值相同时，它们同时渲染，只显示最后一个摄像机所拍摄的内容，其他被遮挡，可以调整 <strong>Viewport Rect</strong> 属性，使同一层下多摄像机内容同时显示。该模式用于游戏对象不希望被裁剪的情况。</li>
+</ul>
+</li>
+<li><font color=red>Dont Clear</font><ul>
+<li>此模式不会清除颜色或深度缓冲区。结果是<strong>将每帧绘制在下一帧之上</strong>，从而实现涂抹效果。此模式通常不用于游戏，一般与自定义的shader配合使用。在某些GPU(主要是移动端GPU)上，不清除屏幕可能会导致其内容在下一帧未定义。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Background</strong></p>
+<ul>
+<li>在绘制视图中的所有元素之后但没有天空盒的情况下，应用于剩余屏幕部分的颜色。</li>
+</ul>
+</li>
+<li><p><strong>Culling Mask</strong>(剔除遮罩)</p>
+<ul>
+<li>剔除遮罩，选择所要显示的layer(层级)，可使用层来选择性渲染对象组</li>
+</ul>
+</li>
+<li><p><strong>Projection</strong>(投射方式)</p>
+<ul>
+<li><font color=red>Perspective</font>(透视):	摄像机将用透视的方式来渲染游戏对象。透视视图和我们从眼睛看到的视图是一样。用于3D游戏<ul>
+<li><font color=yellow>Field of view</font>: 视野范围。用于控制摄像机的视角宽度以及纵向的角度尺寸。</li>
+</ul>
+</li>
+<li><font color=red>orthographic</font>(正交)：摄像机将均匀渲染对象，没有透视感。无法判断物体大小。注意：在正交模式下不支持延迟渲染。始终使用前向渲染。<ul>
+<li><font color=yellow>Size</font>:大小。用于控制正交模式摄像机的视口大小。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Physical Camera</strong>(物理相机)：默认不勾选，启用后模拟真实摄像机属性</p>
+<ul>
+<li><p><font color=red>Focal Length</font>: 设置摄像机传感器和摄像机镜头之间的距离（以毫米为单位），较小的值产生更宽的 **Filed of View ** ，反之亦然。更改此值，Unity会相应自动更新 <strong>Filed of View</strong> 属性。</p>
+</li>
+<li><p><em><strong>Sensor Type</strong></em>：指定希望摄像机模拟的真实摄像机格式。从列表中选择所需的格式。选择摄像机格式时，Unity 会自动将 <strong>Sensor Size &gt; X</strong> 和 <strong>Y</strong> 属性设置为正确的值。如果手动更改 <strong>Sensor Size</strong> 值，Unity 会自动将此属性设置为 <strong>Custom</strong>。</p>
+</li>
+<li><p><em><strong>Sensor Size</strong></em>：设置摄像机传感器的大小（以毫米为单位）。选择 <strong>Sensor Type</strong> 时，Unity 会自动设置 <strong>X</strong> 和 <strong>Y</strong> 值。如果需要，可以输入自定义值。</p>
+<ul>
+<li>X : 传感器的宽度。</li>
+<li>Y : 传感器的高度。</li>
+</ul>
+</li>
+<li><p><em><strong>Lens Shift</strong></em>: 从中心水平或垂直移动镜头。值是传感器大小的倍数；例如，在 X 轴上平移 0.5 将使传感器偏移其水平大小的一半。可使用镜头移位来校正摄像机与拍摄对象成一定角度时发生的失真（例如，平行线会聚）。沿任一轴移动镜头均可使摄像机视锥体<a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2018.4/Manual/ObliqueFrustum.html">倾斜</a>。</p>
+<ul>
+<li>X : 传感器水平偏移。</li>
+<li>Y : 传感器垂直偏移。</li>
+</ul>
+</li>
+<li><p><em><strong>Gate Fit</strong></em>: 用于更改<strong>分辨率门</strong>大小（Game 视图的大小&#x2F;宽高比）相对于<strong>胶片门</strong>大小（物理摄像机传感器的大小&#x2F;纵横比）的选项。</p>
+<ul>
+<li><p><em>Vertical</em>: 使分辨率门适应胶片门的高度。如果传感器宽高比大于 Game 视图宽高比，Unity 会在两侧裁剪渲染的图像。如果传感器宽高比小于 Game 视图宽高比，Unity 会在两侧对渲染的图像进行过扫描。选择此设置时，更改传感器宽度（<strong>Sensor Size &gt; X 属性</strong>）不会影响渲染的图像。</p>
+</li>
+<li><p><em>Horizontal</em>: 使分辨率门适应胶片门的宽度。如果传感器宽高比大于 Game 视图宽高比，Unity 会在顶部和底部对渲染的图像进行过扫描。如果传感器宽高比小于 Game 视图宽高比，Unity 会在顶部和底部裁剪渲染的图像。选择此设置时，更改传感器高度（<strong>Sensor Size &gt; Y</strong> 属性）不会影响渲染的图像。</p>
+</li>
+<li><p><em>Fill</em>: 使分辨率门适应胶片门的宽度或高度（以较小者为准）。这会裁剪渲染的图像。</p>
+</li>
+<li><p><em>Overscan</em>: 使分辨率门适应胶片门的宽度或高度（以较大者为准）。这会过扫描 (overscan) 渲染的图像。</p>
+</li>
+<li><p><em>None</em>: 忽略分辨率门，仅使用胶片门。这会拉伸渲染的图像以适应 Game 视图宽高比。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Clipping Planes</strong>: 剪切平面。摄像机开始渲染与停止渲染之间的距离。</p>
+<ul>
+<li><font color=red>Near</font>:近裁剪面， 相当于摄像机的最近绘制点。</li>
+<li><font color=red>Far</font>: 远裁剪面， 相当于摄像机的最远绘制点。</li>
+</ul>
+</li>
+<li><p><strong>Viewport Rect</strong>: 标准视图矩形。用四个数值来控制摄像机的视图在屏幕上的位置。</p>
+<ul>
+<li><em>X</em> : 绘制摄像机视图的起始水平位置。</li>
+<li><em>Y</em>  : 绘制摄像机视图的起始垂直位置。</li>
+<li><em>W</em> : 屏幕上摄像机输出的宽度。</li>
+<li><em>H</em> : 屏幕上摄像机输出的高度。</li>
+</ul>
+</li>
+<li><p><strong>Depth</strong>：摄像机在绘制顺序中的位置。具有更大值的摄像机将绘制在具有更小值的摄像机之上。</p>
+</li>
+<li><p><strong>Rendering Path</strong>：定义摄像机使用的渲染方法，有以下四种</p>
+<ul>
+<li><em>Use Player Settings</em>：此摄像机将使用 Player Settings 中设置的任何渲染路径 (Rendering Path)。</li>
+<li><em>Vertex Lit</em>：此摄像机渲染的所有对象都将渲染为顶点光照对象。</li>
+<li><em>Forward</em>：快速渲染。摄像机将所有游戏对象将按每种材质一个通道的方式来渲染。对于实时光影来说， Forward的消耗比Deferred更高,，但是Forward更加适合用于半烘焙半实时的项目。Forward解决了一个Deferred没能解决的问题.。那就是Deferred不能让Mixed模式的DirectionalLight将动态阴影投射在一个经过烘焙了的静态物体上。</li>
+<li><em>Deferred Lighting</em> ： Unity5多了一种RenderingPath，可以取代过去的Legacy Deferred. 最大的特点是对于实时光影来说的性能消耗更低了，这个模式是最适合动态光影的。对于次时代PC或者主机游戏, 当然要选择这个。通过Viking Village以及”进化”这些最新游戏的观察我发现次时代游戏几乎不需要烘焙光照贴图了, 全都使用实时阴影是很好的选择.。通过阴影距离来控制性能消耗。而在Viking Village的场景中，由于整个场景全部使用了动态光源，Forward的Rendering方面的性能消耗要比Deferred高出一倍！ 因此在完全使用动态光源的项目中千万不能使用Forward。</li>
+</ul>
+</li>
+<li><p><strong>Target Texture</strong>：目标纹理。用于将摄像机视图输出并渲染到屏幕。一般用于制作导航图或者画中画等效果。设置此引用将禁用此摄像机的渲染到屏幕功能。</p>
+</li>
+<li><p><strong>Occlusion Culling</strong>：为此摄像机启用遮挡剔除 (Occlusion Culling)。遮挡剔除意味着隐藏在其他对象后面的对象不会被渲染。</p>
+</li>
+<li><p><strong>Allow HDR</strong>：允许渲染高动态色彩画面。如果相机正在使用HDR渲染，则为True;如果不是，则为false。即使此属性为true，也仅在当前图形层支持使用HDR。</p>
+</li>
+<li><p><strong>Allow MSAA</strong>：摄像机启用多重采样抗锯齿，允许进行硬件抗锯齿。</p>
+</li>
+<li><p><strong>Allow Dynamic Resolution</strong>：摄像机启用动态分辨率渲染，如果相机使用动态分辨率渲染，则为True;如果不是，则为false。即使此属性为true，也仅在当前图形设备也支持使用动态分辨率。</p>
+</li>
+<li><p><strong>Target Display</strong>：此设置使Camera渲染到指定的显示中，定义要渲染到的外部设备。值为 1 到 8 之间。</p>
+</li>
+</ul>
+<p>参考文档：</p>
+<ol>
+<li><p><a target="_blank" rel="noopener" href="https://docs.unity.cn/cn/2018.4/Manual/class-Camera.html">Unity 官方开发手册</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42513339/article/details/83010862">Unity3D摄像机Camera参数详解</a></p>
+</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.serendipity.fit">zj970</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.serendipity.fit/2021/07/29/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8BCamera/">https://www.serendipity.fit/2021/07/29/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8BCamera/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.serendipity.fit" target="_blank">落雪のBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2021/10/21/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Unity学习之生命周期"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Unity学习之生命周期</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BActivityManagerService/" title="Android_14_源码分析之ActivityManagerService"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-13</div><div class="title">Android_14_源码分析之ActivityManagerService</div></div></a></div><div><a href="/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BWindowManagerService/" title="Android_14_源码分析之WindowManagerService"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-13</div><div class="title">Android_14_源码分析之WindowManagerService</div></div></a></div><div><a href="/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BPackageManagerService/" title="Android_14_源码分析之PackageManagerService"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-13</div><div class="title">Android_14_源码分析之PackageManagerService</div></div></a></div><div><a href="/2023/11/11/AndroidTv%E9%83%A8%E5%88%86%E9%A1%B5%E9%9D%A2%E6%8C%89%E9%94%AE%E9%9F%B3%E6%97%A0%E6%95%88/" title="AndroidTv部分页面按键音无效"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-11</div><div class="title">AndroidTv部分页面按键音无效</div></div></a></div><div><a href="/2023/11/24/Android%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85-Java/" title="Android第三方网络框架封装-Java"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-24</div><div class="title">Android第三方网络框架封装-Java</div></div></a></div><div><a href="/2024/01/24/MVC-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/" title="MVC-三层架构简介"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-24</div><div class="title">MVC-三层架构简介</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zj970</div><div class="author-info__description">谢谢你在世界的角落找到我</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">18</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zj970"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎添加我的qq3060529292一起交流学习</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%91%84%E5%83%8F%E6%9C%BA-Camera"><span class="toc-number">1.</span> <span class="toc-text">摄像机(Camera)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.1.</span> <span class="toc-text">参数详解</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/16/IDEA%E5%BC%80%E5%8F%91%E9%85%8D%E7%BD%AE%E6%9B%B4%E6%96%B0/" title="IDEA开发配置更新">IDEA开发配置更新</a><time datetime="2024-05-16T14:21:49.000Z" title="发表于 2024-05-16 22:21:49">2024-05-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/11/Handler%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6/" title="Handler通信机制">Handler通信机制</a><time datetime="2024-03-11T15:38:22.000Z" title="发表于 2024-03-11 23:38:22">2024-03-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/04/%E6%B5%85%E8%B0%88%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/" title="浅谈四大组件通信">浅谈四大组件通信</a><time datetime="2024-03-04T02:13:07.000Z" title="发表于 2024-03-04 10:13:07">2024-03-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/03/04/%E4%BD%BF%E7%94%A8%E5%AE%98%E6%96%B9APi%E8%8E%B7%E5%8F%96Youtube%E8%A7%86%E9%A2%91%E8%B5%84%E6%BA%90/" title="使用官方APi获取Youtube视频资源">使用官方APi获取Youtube视频资源</a><time datetime="2024-03-04T02:07:32.000Z" title="发表于 2024-03-04 10:07:32">2024-03-04</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/01/24/MVC-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/" title="MVC-三层架构简介">MVC-三层架构简介</a><time datetime="2024-01-24T03:30:24.000Z" title="发表于 2024-01-24 11:30:24">2024-01-24</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By zj970</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'forest'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
