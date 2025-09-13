@@ -9,16 +9,105 @@
 <meta property="article:author" content="zj970">
 <meta property="article:tag" content="落雪">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg"><link rel="shortcut icon" href="https://www.bing.com/images/search?view=detailV2&ccid=huHclsGl&id=7F919E2195F90B62626DC69F0CF880B354D6FB06&thid=OIP.huHclsGl94FVgLfjfHIv3AAAAA&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.86e1dc96c1a5f7815580b7e37c722fdc%3frik%3dBvvWVLOA%252bAyfxg%26riu%3dhttp%253a%252f%252fbpic.588ku.com%252felement_pic%252f00%252f89%252f91%252f6556ee891156fc3.jpg%26ehk%3dzvfPzYh1t%252b9%252bgofVbZ1A0%252bGBk3KrrBMnzLkuaFWGIqA%253d%26risl%3d%26pid%3dImgRaw%26r%3d0&exph=260&expw=260&q=%e5%8d%9a%e5%ae%a2%e7%bd%91%e7%ab%99%e5%9b%be%e6%a0%87&simid=608046827163756575&FORM=IRPRST&ck=E0755331E72FB4731B7DD4195628F295&selectedIndex=7"><link rel="canonical" href="https://www.serendipity.fit/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg"><script type="application/ld+json"></script><link rel="shortcut icon" href="https://www.bing.com/images/search?view=detailV2&ccid=huHclsGl&id=7F919E2195F90B62626DC69F0CF880B354D6FB06&thid=OIP.huHclsGl94FVgLfjfHIv3AAAAA&mediaurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.86e1dc96c1a5f7815580b7e37c722fdc%3frik%3dBvvWVLOA%252bAyfxg%26riu%3dhttp%253a%252f%252fbpic.588ku.com%252felement_pic%252f00%252f89%252f91%252f6556ee891156fc3.jpg%26ehk%3dzvfPzYh1t%252b9%252bgofVbZ1A0%252bGBk3KrrBMnzLkuaFWGIqA%253d%26risl%3d%26pid%3dImgRaw%26r%3d0&exph=260&expw=260&q=%e5%8d%9a%e5%ae%a2%e7%bd%91%e7%ab%99%e5%9b%be%e6%a0%87&simid=608046827163756575&FORM=IRPRST&ck=E0755331E72FB4731B7DD4195628F295&selectedIndex=7"><link rel="canonical" href="https://www.serendipity.fit/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  localSearch: undefined,
   translate: undefined,
-  noticeOutdate: undefined,
-  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
   copy: {
     success: '复制成功',
-    error: '复制错误',
+    error: '复制失败',
     noSupport: '浏览器不支持'
   },
   relativeDate: {
@@ -34,14 +123,14 @@
     month: '个月前'
   },
   copyright: undefined,
-  lightbox: 'fancybox',
+  lightbox: 'null',
   Snackbar: undefined,
   infinitegrid: {
     js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
     buttonText: '加载更多'
   },
   isPhotoFigcaption: false,
-  islazyload: false,
+  islazyloadPlugin: false,
   isAnchor: false,
   percent: {
     toc: true,
@@ -50,199 +139,148 @@
   autoDarkmode: false
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: '落雪のBlog',
-  isPost: false,
-  isHome: true,
-  isHighlightShrink: true,
+  isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2025-06-04 23:04:49'
-}</script><script>(win=>{
-      win.saveToLocal = {
-        set: (key, value, ttl) => {
-          if (ttl === 0) return
-          const now = Date.now()
-          const expiry = now + ttl * 86400000
-          const item = {
-            value,
-            expiry
-          }
-          localStorage.setItem(key, JSON.stringify(item))
-        },
-      
-        get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
-        }
-      }
-    
-      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        script.onerror = reject
-        script.onload = script.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          script.onload = script.onreadystatechange = null
-          resolve()
-        }
-
-        Object.keys(attr).forEach(key => {
-          script.setAttribute(key, attr[key])
-        })
-
-        document.head.appendChild(script)
-      })
-    
-      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onerror = reject
-        link.onload = link.onreadystatechange = function() {
-          const loadState = this.readyState
-          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
-          link.onload = link.onreadystatechange = null
-          resolve()
-        }
-        document.head.appendChild(link)
-      })
-    
-      win.activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      win.activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-      const t = saveToLocal.get('theme')
-    
-        if (t === 'dark') activateDarkMode()
-        else if (t === 'light') activateLightMode()
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        if (asideStatus === 'hide') {
-          document.documentElement.classList.add('hide-aside')
-        } else {
-          document.documentElement.classList.remove('hide-aside')
-        }
-      }
-    
-      const detectApple = () => {
-        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
-          document.documentElement.classList.add('apple')
-        }
-      }
-      detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-tags"></i><span> 标签</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/notes"><i class="fa-fw fas fa-tags"></i><span> 笔记</span></a></li><li><a class="site-page child" href="/tags/life"><i class="fa-fw fas fa-tags"></i><span> 人生</span></a></li><li><a class="site-page child" href="/tags/originality"><i class="fa-fw fas fa-tags"></i><span> 原创</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/Android"><i class="fa-fw fas fa-folder-open"></i><span> Android</span></a></li><li><a class="site-page child" href="/categories/AndroidTV"><i class="fa-fw fas fa-folder-open"></i><span> AndroidTV</span></a></li><li><a class="site-page child" href="/categories/Framework"><i class="fa-fw fas fa-folder-open"></i><span> Framework</span></a></li><li><a class="site-page child" href="/categories/Unity"><i class="fa-fw fas fa-folder-open"></i><span> Unity</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347)"><nav id="nav"><span id="blog-info"><a href="/" title="落雪のBlog"><span class="site-name">落雪のBlog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-tags"></i><span> 标签</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/tags/notes"><i class="fa-fw fas fa-tags"></i><span> 笔记</span></a></li><li><a class="site-page child" href="/tags/life"><i class="fa-fw fas fa-tags"></i><span> 人生</span></a></li><li><a class="site-page child" href="/tags/originality"><i class="fa-fw fas fa-tags"></i><span> 原创</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/categories/Android"><i class="fa-fw fas fa-folder-open"></i><span> Android</span></a></li><li><a class="site-page child" href="/categories/AndroidTV"><i class="fa-fw fas fa-folder-open"></i><span> AndroidTV</span></a></li><li><a class="site-page child" href="/categories/Framework"><i class="fa-fw fas fa-folder-open"></i><span> Framework</span></a></li><li><a class="site-page child" href="/categories/Unity"><i class="fa-fw fas fa-folder-open"></i><span> Unity</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">落雪のBlog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2023/11/11/RecyclerView%E5%92%8CListView%E7%9A%84%E7%BC%93%E5%AD%98%E5%A4%8D%E7%94%A8%E6%9C%BA%E5%88%B6/" title="RecyclerView和ListView的缓存复用机制"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RecyclerView和ListView的缓存复用机制"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/11/11/RecyclerView%E5%92%8CListView%E7%9A%84%E7%BC%93%E5%AD%98%E5%A4%8D%E7%94%A8%E6%9C%BA%E5%88%B6/" title="RecyclerView和ListView的缓存复用机制">RecyclerView和ListView的缓存复用机制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-11T03:30:12.000Z" title="发表于 2023-11-11 11:30:12">2023-11-11</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-22T09:40:28.410Z" title="更新于 2024-01-22 17:40:28">2024-01-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="content">
-
-背景&emsp;&emsp;Android对于列表View的渲染和使用，常用的控件为ListView和RecyclerView。
-适配器使用ListView123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657public class WifiAdapter extends ArrayAdapter&lt;ScanResult&gt; &#123;    public WifiAdapter(Context context, int resource, List&lt;ScanResult&gt; objects) &#123;        super(context, resource, objects);    &#125;    /**     * 获取适配器控件中的View对象，得到用于展示数据的视图 int position,：当前item的下标 View convertView,     * 表示可复用的View  ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/12/31/%E7%A6%BB%E5%88%AB2022/" title="离别2022"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="离别2022"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/12/31/%E7%A6%BB%E5%88%AB2022/" title="离别2022">离别2022</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-31T15:59:59.000Z" title="发表于 2022-12-31 23:59:59">2022-12-31</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-30T03:30:53.672Z" title="更新于 2024-01-30 11:30:53">2024-01-30</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E4%BA%BA%E7%94%9F/">人生</a></span></div><div class="content">第一行代码 Android 第2版 郭霖著
-第1章 开启启程——你的第一行Android代码
-第2章 先从看得到的入手——探究活动
-第3章 软件也要拼脸蛋——UI开发的点点滴滴
-第4章 手机平板要兼顾——探究碎片
-第5章 全局大喇叭——详解广播机制
-第6章 数据存储全方案——详解持久化技术
-第7章 跨程序共享数据——探究内容提供器
-第8章 丰富你的程序——运用手机多媒体
-第9章 看看精彩的世界——使用网络技术
-第10章 后台默默的劳动者——探究服务
-第11章 Android特色开发——基于位置的服务
-第12章 最佳的UI体验——MaterialDesign实战
-第13章 继续进阶——你还应该掌握的高级技巧
-第14章 进入实战——开发酷欧天气
-第15章 最后一步——将应用发布到360应用商店
-
-总结&emsp;&emsp;观看郭老师的第一行代码书籍，始于7月终于12月。从一个懵懂无知的Android小白，如今总算入了门。恰逢2023年元旦来临之际，感触颇多。&emsp;&emsp;还记得刚接触Android时配置环境的手忙脚乱，踩了很多坑。比如jdk、gradle、gradle plug ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/10/21/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Unity学习之生命周期"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity学习之生命周期"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/10/21/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Unity学习之生命周期">Unity学习之生命周期</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-21T04:53:29.000Z" title="发表于 2021-10-21 12:53:29">2021-10-21</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-29T05:14:26.427Z" title="更新于 2024-07-29 13:14:26">2024-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity/">Unity</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="content">
-
-Unity 生命周期函数
-Unity 3D 中的生命周期函数
-生命周函数：需要继承 MonoBehaviour 类才能使用。生命周期函数全部都是由系统定义好的，系统会自动调用，且调用顺序与在代码中的书写顺序无关
-常用的生命周期函数Awake(): 唤醒事件，游戏一开始运行就执行，只执行一次。
-OnEnable(): 启用事件，只执行一次，当脚本组件被启用的时候执行一次。
-Start(): 开始事件，执行一次。
-FiexdUpdate(): 固定更新事件，执行N次，每物理帧(0.02s)执行一次。所有物理相关的更新都在这个事件中处理。
-**Update()**： 更新事件，执行N次，每帧执行一次。
-LateUpdate(): 稍后更新事件，执行N次，在Update()事件执行完毕后在再执行。
-OnGUI(): GUI渲染事件，执行N次，执行的次数是Update()事件的两倍。
-OnDisable(): 禁用事件，执行一次。在OnDestory()事件前执行。或者当该脚本组件被”禁用”后，也会出发该事件。
-OnDestory(): 销毁事件，执行一次。当脚本所挂载的游戏物体被销毁时执行 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/07/29/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8BCamera/" title="Unity学习之Camera"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity学习之Camera"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/07/29/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8BCamera/" title="Unity学习之Camera">Unity学习之Camera</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-29T04:53:29.000Z" title="发表于 2021-07-29 12:53:29">2021-07-29</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-29T05:14:14.942Z" title="更新于 2024-07-29 13:14:14">2024-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity/">Unity</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="content">
-
-摄像机(Camera)（Unity2018.4.3f1）
-—
-参数详解根据项目使用的渲染管线，unity 在Camera Inspector 中显示不同的属性。
-
-通用渲染管线（URP）
-高清渲染管线（HDRP）
-内置渲染管线
-
-
-Clear Flags:	确定将清除屏幕的哪些部分，使用多个摄像机来绘制不同游戏对象的情况。每个摄像机在渲染其视图时都会存储颜色和深度信息。屏幕中未绘制的部分为空，默认情况下将显示天空盒(Skybox)。使用多个摄像机时，每个摄像机都会在缓存区中存储自己的颜色和深度信息，随着每个摄像机渲染而累积越来越多数据。场景中的任何特定摄像机渲染其视图时，可以设置Clear Flags 来清除不同的缓冲区信息集合，有以下四个选择：
-
-Skybox
-这是默认设置。屏幕中任意空白部分将显示当前摄像机的天空盒。默认为Lighting窗口(菜单–&gt;Window–&gt;Rendering–&gt;Lighting Settings)中选择的天空盒。随后，它将恢复为背景颜色（Background Color）。也可以将Skybox组件添加到摄像机。创建新的天空盒
-
-
-S ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">zj970</div><div class="author-info__description">谢谢你在世界的角落找到我</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">24</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zj970"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎添加我的qq3060529292一起交流学习</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/Android%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" title="Android之渲染原理"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android之渲染原理"/></a><div class="content"><a class="title" href="/2025/06/04/Android%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" title="Android之渲染原理">Android之渲染原理</a><time datetime="2025-06-03T16:33:51.000Z" title="发表于 2025-06-04 00:33:51">2025-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/25/Debug-JDB/" title="Debug 工具之 JDB"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Debug 工具之 JDB"/></a><div class="content"><a class="title" href="/2025/05/25/Debug-JDB/" title="Debug 工具之 JDB">Debug 工具之 JDB</a><time datetime="2025-05-25T11:24:20.000Z" title="发表于 2025-05-25 19:24:20">2025-05-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/31/%E7%A6%BB%E5%88%AB2024/" title="离别2024"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="离别2024"/></a><div class="content"><a class="title" href="/2024/12/31/%E7%A6%BB%E5%88%AB2024/" title="离别2024">离别2024</a><time datetime="2024-12-31T15:59:59.000Z" title="发表于 2024-12-31 23:59:59">2024-12-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/17/%E8%91%AC%E9%80%81%E7%9A%84%E8%8A%99%E8%8E%89%E8%8E%B2/" title="葬送的芙莉莲"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="葬送的芙莉莲"/></a><div class="content"><a class="title" href="/2024/11/17/%E8%91%AC%E9%80%81%E7%9A%84%E8%8A%99%E8%8E%89%E8%8E%B2/" title="葬送的芙莉莲">葬送的芙莉莲</a><time datetime="2024-11-17T11:57:06.000Z" title="发表于 2024-11-17 19:57:06">2024-11-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/10/03/%E5%A4%9C%E7%94%9F%E6%B4%BB/" title="夜生活"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="夜生活"/></a><div class="content"><a class="title" href="/2024/10/03/%E5%A4%9C%E7%94%9F%E6%B4%BB/" title="夜生活">夜生活</a><time datetime="2024-10-02T19:11:31.000Z" title="发表于 2024-10-03 03:11:31">2024-10-03</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">落雪のBlog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">落雪のBlog</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="post_cover left"><a href="/2023/11/11/AndroidTv%E9%83%A8%E5%88%86%E9%A1%B5%E9%9D%A2%E6%8C%89%E9%94%AE%E9%9F%B3%E6%97%A0%E6%95%88/" title="AndroidTv部分页面按键音无效"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AndroidTv部分页面按键音无效"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/11/11/AndroidTv%E9%83%A8%E5%88%86%E9%A1%B5%E9%9D%A2%E6%8C%89%E9%94%AE%E9%9F%B3%E6%97%A0%E6%95%88/" title="AndroidTv部分页面按键音无效">AndroidTv部分页面按键音无效</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-11T15:24:09.000Z" title="发表于 2023-11-11 23:24:09">2023-11-11</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-13T18:20:05.744Z" title="更新于 2025-09-14 02:20:05">2025-09-14</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="content">  Android Tv 部分页面按键音无效，dispatchKeyEvent分发被拦截&emsp;&emsp;开始阅读之前，可以简单了解一下这些大佬的文章。    c枫_撸码的日子   Android 按键处理一 （基础知识） Android 按键处理二 （按键流程之内核层篇） Android 按键处理三 （按键流程之framework）   空杯的境界 Android 按键事件(KeyEvent)的分发机制   小羊子说 Android TV中按键事件和焦点处理总结   圆周率X Android dispatchKeyEvent事件分发详解，简单易懂    问题描述&emsp;&emsp;接入喇叭，进入应用，突然发现一些页面有系统调用的按键提示音，而有些页面则没有。(最终发现是使用了Scrollview出的bug) 问题分析&emsp;&emsp;既然按键声音没有发出，那首先需要了解一下按键声音是怎么发出的。当用户注册了clickListener，则调用发出playSoundEffect()和响应用户写好的onClick()方法。首先排除系统设置声音无效。可以使用adb命令 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2023/11/11/RecyclerView%E5%92%8CListView%E7%9A%84%E7%BC%93%E5%AD%98%E5%A4%8D%E7%94%A8%E6%9C%BA%E5%88%B6/" title="RecyclerView和ListView的缓存复用机制"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RecyclerView和ListView的缓存复用机制"></a></div><div class="recent-post-info"><a class="article-title" href="/2023/11/11/RecyclerView%E5%92%8CListView%E7%9A%84%E7%BC%93%E5%AD%98%E5%A4%8D%E7%94%A8%E6%9C%BA%E5%88%B6/" title="RecyclerView和ListView的缓存复用机制">RecyclerView和ListView的缓存复用机制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-11-11T03:30:12.000Z" title="发表于 2023-11-11 11:30:12">2023-11-11</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-22T09:40:28.410Z" title="更新于 2024-01-22 17:40:28">2024-01-22</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Android/">Android</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="content">  背景&emsp;&emsp;Android对于列表View的渲染和使用，常用的控件为ListView和RecyclerView。 适配器使用ListView123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657public class WifiAdapter extends ArrayAdapter&lt;ScanResult&gt; &#123;    public WifiAdapter(Context context, int resource, List&lt;ScanResult&gt; objects) &#123;        super(context, resource, objects);    &#125;    /**     * 获取适配器控件中的View对象，得到用于展示数据的视图 int position,：当前item的下标 View convertView,     * 表示可复用的Vi...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/12/31/%E7%A6%BB%E5%88%AB2022/" title="离别2022"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="离别2022"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/12/31/%E7%A6%BB%E5%88%AB2022/" title="离别2022">离别2022</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-31T15:59:59.000Z" title="发表于 2022-12-31 23:59:59">2022-12-31</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-30T03:30:53.672Z" title="更新于 2024-01-30 11:30:53">2024-01-30</time></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E4%BA%BA%E7%94%9F/">人生</a></span></div><div class="content">第一行代码 Android 第2版 郭霖著 第1章 开启启程——你的第一行Android代码 第2章 先从看得到的入手——探究活动 第3章 软件也要拼脸蛋——UI开发的点点滴滴 第4章 手机平板要兼顾——探究碎片 第5章 全局大喇叭——详解广播机制 第6章 数据存储全方案——详解持久化技术 第7章 跨程序共享数据——探究内容提供器 第8章 丰富你的程序——运用手机多媒体 第9章 看看精彩的世界——使用网络技术 第10章 后台默默的劳动者——探究服务 第11章 Android特色开发——基于位置的服务 第12章 最佳的UI体验——MaterialDesign实战 第13章 继续进阶——你还应该掌握的高级技巧 第14章 进入实战——开发酷欧天气 第15章 最后一步——将应用发布到360应用商店  总结&emsp;&emsp;观看郭老师的第一行代码书籍，始于7月终于12月。从一个懵懂无知的Android小白，如今总算入了门。恰逢2023年元旦来临之际，感触颇多。&emsp;&emsp;还记得刚接触Android时配置环境的手忙脚乱，踩了很多坑。比如jdk、gradle、gradle p...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2021/10/21/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Unity学习之生命周期"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity学习之生命周期"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/10/21/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" title="Unity学习之生命周期">Unity学习之生命周期</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-21T04:53:29.000Z" title="发表于 2021-10-21 12:53:29">2021-10-21</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-29T05:14:26.427Z" title="更新于 2024-07-29 13:14:26">2024-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity/">Unity</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="content">  Unity 生命周期函数 Unity 3D 中的生命周期函数 生命周函数：需要继承 MonoBehaviour 类才能使用。生命周期函数全部都是由系统定义好的，系统会自动调用，且调用顺序与在代码中的书写顺序无关 常用的生命周期函数Awake(): 唤醒事件，游戏一开始运行就执行，只执行一次。 OnEnable(): 启用事件，只执行一次，当脚本组件被启用的时候执行一次。 Start(): 开始事件，执行一次。 FiexdUpdate(): 固定更新事件，执行N次，每物理帧(0.02s)执行一次。所有物理相关的更新都在这个事件中处理。 **Update()**： 更新事件，执行N次，每帧执行一次。 LateUpdate(): 稍后更新事件，执行N次，在Update()事件执行完毕后在再执行。 OnGUI(): GUI渲染事件，执行N次，执行的次数是Update()事件的两倍。 OnDisable(): 禁用事件，执行一次。在OnDestory()事件前执行。或者当该脚本组件被”禁用”后，也会出发该事件。 OnDestory(): 销毁事件，执行一次。当脚本所挂载的游戏物体被销毁...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2021/07/29/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8BCamera/" title="Unity学习之Camera"><img class="post-bg" src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Unity学习之Camera"></a></div><div class="recent-post-info"><a class="article-title" href="/2021/07/29/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8BCamera/" title="Unity学习之Camera">Unity学习之Camera</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-07-29T04:53:29.000Z" title="发表于 2021-07-29 12:53:29">2021-07-29</time><span class="article-meta-separator">|</span><i class="fas fa-history"></i><span class="article-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-29T05:14:14.942Z" title="更新于 2024-07-29 13:14:14">2024-07-29</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/Unity/">Unity</a></span><span class="article-meta tags"><span class="article-meta-separator">|</span><i class="fas fa-tag"></i><a class="article-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></span></div><div class="content">  摄像机(Camera)（Unity2018.4.3f1） — 参数详解根据项目使用的渲染管线，unity 在Camera Inspector 中显示不同的属性。  通用渲染管线（URP） 高清渲染管线（HDRP） 内置渲染管线   Clear Flags:	确定将清除屏幕的哪些部分，使用多个摄像机来绘制不同游戏对象的情况。每个摄像机在渲染其视图时都会存储颜色和深度信息。屏幕中未绘制的部分为空，默认情况下将显示天空盒(Skybox)。使用多个摄像机时，每个摄像机都会在缓存区中存储自己的颜色和深度信息，随着每个摄像机渲染而累积越来越多数据。场景中的任何特定摄像机渲染其视图时，可以设置Clear Flags 来清除不同的缓冲区信息集合，有以下四个选择：  Skybox 这是默认设置。屏幕中任意空白部分将显示当前摄像机的天空盒。默认为Lighting窗口(菜单–&gt;Window–&gt;Rendering–&gt;Lighting Settings)中选择的天空盒。随后，它将恢复为背景颜色（Background Color）。也可以将Skybox组件添加到摄像机。创建新的天空盒 ...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">zj970</div><div class="author-info-description">谢谢你在世界的角落找到我</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zj970"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">外向是生活所需，孤独是自我享受</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/14/ArchLinuxSunshine/" title="ArchLinuxSunshine"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ArchLinuxSunshine"/></a><div class="content"><a class="title" href="/2025/09/14/ArchLinuxSunshine/" title="ArchLinuxSunshine">ArchLinuxSunshine</a><time datetime="2025-09-13T17:55:33.000Z" title="发表于 2025-09-14 01:55:33">2025-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/Android%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" title="Android之渲染原理"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android之渲染原理"/></a><div class="content"><a class="title" href="/2025/06/04/Android%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" title="Android之渲染原理">Android之渲染原理</a><time datetime="2025-06-03T16:33:51.000Z" title="发表于 2025-06-04 00:33:51">2025-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/25/Debug-JDB/" title="Debug 工具之 JDB"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Debug 工具之 JDB"/></a><div class="content"><a class="title" href="/2025/05/25/Debug-JDB/" title="Debug 工具之 JDB">Debug 工具之 JDB</a><time datetime="2025-05-25T11:24:20.000Z" title="发表于 2025-05-25 19:24:20">2025-05-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/31/%E7%A6%BB%E5%88%AB2024/" title="离别2024"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="离别2024"/></a><div class="content"><a class="title" href="/2024/12/31/%E7%A6%BB%E5%88%AB2024/" title="离别2024">离别2024</a><time datetime="2024-12-31T15:59:59.000Z" title="发表于 2024-12-31 23:59:59">2024-12-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/11/17/%E8%91%AC%E9%80%81%E7%9A%84%E8%8A%99%E8%8E%89%E8%8E%B2/" title="葬送的芙莉莲"><img src="https://i.loli.net/2020/05/01/gkihqEjXxJ5UZ1C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="葬送的芙莉莲"/></a><div class="content"><a class="title" href="/2024/11/17/%E8%91%AC%E9%80%81%E7%9A%84%E8%8A%99%E8%8E%89%E8%8E%B2/" title="葬送的芙莉莲">葬送的芙莉莲</a><time datetime="2024-11-17T11:57:06.000Z" title="发表于 2024-11-17 19:57:06">2024-11-17</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
             <i class="fas fa-folder-open"></i>
             <span>分类</span>
             
-            </div>
-            <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AndroidTV/"><span class="card-category-list-name">AndroidTV</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Framework/"><span class="card-category-list-name">Framework</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Unity/"><span class="card-category-list-name">Unity</span><span class="card-category-list-count">2</span></a></li>
-            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.5em; color: #99a9bf">笔记</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 1.3em; color: #99a1ac">人生</a> <a href="/tags/%E5%8E%9F%E5%88%9B/" style="font-size: 1.1em; color: #999">原创</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
-    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/06/"><span class="card-archive-list-date">六月 2025</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2025/05/"><span class="card-archive-list-date">五月 2025</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/12/"><span class="card-archive-list-date">十二月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/11/"><span class="card-archive-list-date">十一月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/10/"><span class="card-archive-list-date">十月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/08/"><span class="card-archive-list-date">八月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/03/"><span class="card-archive-list-date">三月 2024</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">24</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-06-04T15:04:49.128Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By zj970</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>(() => {
-  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
-  if ($mermaid.length === 0) return
-  const runMermaid = () => {
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Android/"><span class="card-category-list-name">Android</span><span class="card-category-list-count">12</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/AndroidTV/"><span class="card-category-list-name">AndroidTV</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Framework/"><span class="card-category-list-name">Framework</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Linux/"><span class="card-category-list-name">Linux</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Unity/"><span class="card-category-list-name">Unity</span><span class="card-category-list-count">2</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E5%8E%9F%E5%88%9B/" style="font-size: 1.1em; color: #999">原创</a> <a href="/tags/%E4%BA%BA%E7%94%9F/" style="font-size: 1.3em; color: #99a1ac">人生</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.5em; color: #99a9bf">笔记</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      <a class="card-more-btn" href="/archives/"
+            title="查看更多">
+            <i class="fas fa-angle-right"></i>
+          </a>
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/09/">
+            <span class="card-archive-list-date">
+              九月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/06/">
+            <span class="card-archive-list-date">
+              六月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/05/">
+            <span class="card-archive-list-date">
+              五月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/12/">
+            <span class="card-archive-list-date">
+              十二月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/11/">
+            <span class="card-archive-list-date">
+              十一月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/10/">
+            <span class="card-archive-list-date">
+              十月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/08/">
+            <span class="card-archive-list-date">
+              八月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2024/05/">
+            <span class="card-archive-list-date">
+              五月 2024
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">25</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-09-13T18:40:53.465Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2025 By zj970</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
     window.loadMermaid = true
     const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'forest'
 
-    Array.from($mermaid).forEach((item, index) => {
+    ele.forEach((item, index) => {
       const mermaidSrc = item.firstElementChild
-      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
-      const mermaidID = 'mermaid-' + index
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
       const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
 
       const renderFn = mermaid.render(mermaidID, mermaidDefinition)
-
-      const renderV10 = () => {
-        renderFn.then(({svg}) => {
-          mermaidSrc.insertAdjacentHTML('afterend', svg)
-        })
-      }
-
-      const renderV9 = svg => {
+      const renderMermaid = svg => {
         mermaidSrc.insertAdjacentHTML('afterend', svg)
       }
 
-      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
     })
   }
 
   const loadMermaid = () => {
-    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaid)
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
   }
 
-  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
-
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
   window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
-})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
