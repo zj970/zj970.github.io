@@ -1,0 +1,253 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>AOSP 环境搭建 | 落雪のBlog</title><meta name="author" content="zj970"><meta name="copyright" content="zj970"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="需要有一定 Linux 和 AOSP 编译基础知识，本文仅简单介绍编译和代码查看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AOSP 环境搭建">
+<meta property="og:url" content="https://www.serendipity.fit/2025/09/20/ArchLinux-AOSP-0/index.html">
+<meta property="og:site_name" content="落雪のBlog">
+<meta property="og:description" content="需要有一定 Linux 和 AOSP 编译基础知识，本文仅简单介绍编译和代码查看。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17553037581602176.webp">
+<meta property="article:published_time" content="2025-09-20T14:41:49.000Z">
+<meta property="article:modified_time" content="2025-09-20T20:28:37.594Z">
+<meta property="article:author" content="zj970">
+<meta property="article:tag" content="笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17553037581602176.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AOSP 环境搭建",
+  "url": "https://www.serendipity.fit/2025/09/20/ArchLinux-AOSP-0/",
+  "image": "https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17553037581602176.webp",
+  "datePublished": "2025-09-20T14:41:49.000Z",
+  "dateModified": "2025-09-20T20:28:37.594Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "zj970",
+      "url": "https://www.serendipity.fit"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://gitee.com/zhou-jian1234/resource/raw/master/paper/favicon.webp"><link rel="canonical" href="https://www.serendipity.fit/2025/09/20/ArchLinux-AOSP-0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'AOSP 环境搭建',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17553037581602176.webp);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">落雪のBlog</span></a><a class="nav-page-title" href="/"><span class="site-name">AOSP 环境搭建</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><span class="site-page group"><i class="fa-fw fa fa-heartbeat"></i><span> 清单</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/Gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">AOSP 环境搭建</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-20T14:41:49.000Z" title="发表于 2025-09-20 22:41:49">2025-09-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-20T20:28:37.594Z" title="更新于 2025-09-21 04:28:37">2025-09-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Android/">Android</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><ul>
+<li>前言<ul>
+<li>心不死则道不生，欲不灭则道不存，心不苦则智慧不开，身不苦则福禄不厚。</li>
+</ul>
+</li>
+</ul>
+<h1 id="AOSP-源码环境"><a href="#AOSP-源码环境" class="headerlink" title="AOSP 源码环境"></a>AOSP 源码环境</h1><p>AOSP(Android Open Source Project)是适用于不同规格设备的操作系统。<a target="_blank" rel="noopener" href="https://source.android.google.cn/docs/setup/about">点击跳转官方文档</a></p>
+<h2 id="一、目录结构"><a href="#一、目录结构" class="headerlink" title="一、目录结构"></a>一、目录结构</h2><p>AOSP 是一个巨大的工程，下面是目录结构：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">aosp (Android Open Source Project)</span><br><span class="line">  |<span class="comment">--- .repo            // 由 `repo` 工具管理的版本库元数据目录。包含一个清单文件 (.xml) 来定义如何组合数百个 Git 仓库以构建一个完整的 Android 系统。</span></span><br><span class="line">  |<span class="comment">--- abi              // 应用二进制接口（ABI）检查相关工具和配置，用于确保二进制兼容性。</span></span><br><span class="line">  |<span class="comment">--- art              // Android Runtime (ART) 源码。负责将 DEX 字节码编译成本地机器码并执行，是现代 Android 应用运行的核心虚拟机。</span></span><br><span class="line">  |<span class="comment">--- bionic           // Android 的 C 运行时库（libc）、动态链接器（linker）等。提供了符合 POSIX 标准的系统调用、线程、数学函数等实现，专为移动设备优化。</span></span><br><span class="line">  |<span class="comment">--- bootable         // 启动和更新相关的代码，包括 recovery（恢复模式）和 bootloader（引导加载程序）参考实现。</span></span><br><span class="line">  |<span class="comment">--- build            // AOSP 的构建系统核心，包括 Soong (替代旧的 Makefile) 和 Blueprint 文件。定义了如何编译整个 Android 系统。</span></span><br><span class="line">  |<span class="comment">--- cts              // Compatibility Test Suite (兼容性测试套件)。用于确保设备实现符合 Android 兼容性定义文档 (CDD) 的要求。</span></span><br><span class="line">  |<span class="comment">--- developers       // 为开发者提供的一些工具和示例代码。</span></span><br><span class="line">  |<span class="comment">--- development      // 高级开发工具和应用程序，例如 IDE 插件、系统调试工具等。</span></span><br><span class="line">  |<span class="comment">--- device           // 特定于硬件设备（如 Google Pixel, Nexus）的配置、内核和硬件抽象层 (HAL) 代码。通常由 OEM 厂商添加。</span></span><br><span class="line">  |<span class="comment">--- external         // 大量使用的第三方开源项目（库和工具）的源码，例如 OpenSSL, SQLite, FFmpeg, Clang/LLVM 等。</span></span><br><span class="line">  |<span class="comment">--- frameworks       // Android 框架层的核心代码，分为 Java 和 Native 两部分。</span></span><br><span class="line">         |<span class="comment">--- base      // Java 层的核心框架代码。Android 系统服务（如 ActivityManagerService, WindowManagerService, PackageManagerService）、API 和 UI 组件都在这里。</span></span><br><span class="line">                |<span class="comment">--- libs</span></span><br><span class="line">                       |<span class="comment">--- hwui          // 硬件加速的 2D 渲染引擎，负责 View 的绘制和动画的渲染（RenderThread 在此运行）。</span></span><br><span class="line">         |<span class="comment">--- native    // Native (C/C++) 层的框架代码，提供底层服务和支持。</span></span><br><span class="line">                |<span class="comment">--- services</span></span><br><span class="line">                       |<span class="comment">--- inputflinger    // 系统服务，处理来自全局的输入事件（触摸、按键）并将其分发给合适的窗口。</span></span><br><span class="line">                       |<span class="comment">--- surfaceflinger  // 系统合成服务，接收所有窗口的缓冲区，将它们合成并最终发送给显示设备。</span></span><br><span class="line">  |<span class="comment">--- hardware         // 硬件抽象层 (HAL) 接口定义和部分实现。提供了标准接口让 Android 系统与设备特定的硬件驱动进行通信。</span></span><br><span class="line">  |<span class="comment">--- kernel           // 预编译的 Linux 内核二进制文件。内核源码本身托管在 kernel.org 或其他硬件相关的仓库中（如 kernel/msm）。</span></span><br><span class="line">  |<span class="comment">--- libcore          // Apache Harmony 项目的衍生，提供了 Java 核心类库（如 java.*, javax.*）的实现，包括 Harmony 和 OpenJDK 的代码。</span></span><br><span class="line">  |<span class="comment">--- libnativehelper  // 提供 JNI（Java Native Interface）开发的辅助函数，简化了在 Native 代码中调用 Java 方法和转换数据类型的过程。</span></span><br><span class="line">  |<span class="comment">--- out              // 编译输出目录。包含所有的中间对象文件、最终的系统镜像（system.img, boot.img, recovery.img 等）。</span></span><br><span class="line">  |<span class="comment">--- packages         // 系统核心应用和关键服务模块，例如 Launcher（桌面）、SystemUI（状态栏）、Settings（设置）、Calendar（日历）、Camera（相机）等。</span></span><br><span class="line">  |<span class="comment">--- pdk              // Platform Development Kit (平台开发工具包)，用于帮助硬件制造商将新系统集成到设备上。</span></span><br><span class="line">  |<span class="comment">--- prebuilts        // 预编译好的各种工具链和二进制文件，如 GCC, Clang, NDK, SDK 等，以确保构建环境的一致性。</span></span><br><span class="line">  |<span class="comment">--- sdk              // Software Development Kit (软件开发工具包) 相关工具和模拟器皮肤等。</span></span><br><span class="line">  |<span class="comment">--- system           // Android 操作系统的核心部分。</span></span><br><span class="line">         |<span class="comment">--- core      // 系统核心工具和守护进程，对 Android 至关重要。</span></span><br><span class="line">                |<span class="comment">--- init   // `init` 进程的源码。这是内核启动后的第一个用户空间进程，负责解析 init.rc 脚本、启动系统守护进程和服务。</span></span><br><span class="line">         |<span class="comment">--- extras    // 一些额外的、可选的 Android 工具和库，如 `sqlite3` 命令行工具。</span></span><br><span class="line">  |<span class="comment">--- test             // 大型测试框架和测试用例，例如 VTS (Vendor Test Suite)。</span></span><br><span class="line">  |<span class="comment">--- tools            // 各种开发和支持工具。例如 `aidegen` (为 AOSP 模块生成 IDE 配置)、`emulator` 相关工具等。</span></span><br><span class="line">  |<span class="comment">--- vendor           // 厂商专有软件和硬件驱动目录。包含设备制造商（如 Google, Qualcomm）提供的闭源或特定硬件相关的库、固件和 HAL 实现。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二、下载"><a href="#二、下载" class="headerlink" title="二、下载"></a>二、下载</h2><p>&emsp;&emsp;按照官方文档操作，受到网络影响会失败，这里推荐拉取中科大的镜像，进行同步更新。<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/help/aosp.html">操作文档</a></p>
+<h3 id="1、安装-repo"><a href="#1、安装-repo" class="headerlink" title="1、安装 repo"></a>1、安装 repo</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S repo</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、基础包"><a href="#2、基础包" class="headerlink" title="2、基础包"></a>2、基础包</h3><p>&emsp;&emsp;接着从中科大提供的打包好的 AOSP 镜像<a target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/aosp-monthly/">下载地址</a>并解压、然后修改配置并同步。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar xf aosp-latest.tar</span><br><span class="line">cd aosp</span><br><span class="line">git -C ./.repo/manifests.git/ remote set-url origin https://mirrors.ustc.edu.cn/aosp/platform/manifest.git</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、选择分支"><a href="#3、选择分支" class="headerlink" title="3、选择分支"></a>3、选择分支</h3><p>&emsp;&emsp;通过<a target="_blank" rel="noopener" href="https://source.android.com/docs/setup/reference/build-numbers?hl=zh-cn#source-code-tags-and-builds">文档</a>查看BuildID、分支标识、支持设备的列表。个人比较激进，使用最新的分支 <code>android-latest-release</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd aosp</span><br><span class="line">repo init -b android-latest-release</span><br><span class="line">repo sync</span><br></pre></td></tr></table></figure>
+
+<p>&emsp;&emsp;同步需要大量的时间，建议保持网络畅通。</p>
+<h3 id="4、下载驱动二进制文件-可选"><a href="#4、下载驱动二进制文件-可选" class="headerlink" title="4、下载驱动二进制文件(可选)"></a>4、下载驱动二进制文件(可选)</h3><p>&emsp;&emsp;一部分硬件驱动由硬件厂商提供，Google并没有这些驱动的源码。暂时没有折腾，只想玩一玩编译模拟模拟器镜像，看看代码。<br>&emsp;&emsp;通过上一步查询到的 BuildID ，在此<a target="_blank" rel="noopener" href="https://developers.google.com/android/drivers?hl=zh-cn">页面</a>查找二进制文件并集成到源码即可。</p>
+<h2 id="二、编译"><a href="#二、编译" class="headerlink" title="二、编译"></a>二、编译</h2><ul>
+<li>初始化编译环境</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ./build/envsetup.sh</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>选择编译产品(最新版本已经去除 <code>lunch</code> 选择项，更多<a target="_blank" rel="noopener" href="https://source.android.google.cn/docs/setup/build/building">参考文档</a>)</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用 Cuttlefish emulator</span></span><br><span class="line">lunch aosp_cf_x86_64_only_phone-aosp_current-eng </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">使用 Android Emulator</span></span><br><span class="line">lunch sdk_phone64_x86_64-ap3a-eng</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>编译</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">m</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、源码查看"><a href="#三、源码查看" class="headerlink" title="三、源码查看"></a>三、源码查看</h2><p>这里推荐使用 ASFP(android-studio-for-platform), 安装 <code>yay -S android-studio-for-platform</code>。调整 JVM 内存，可以参考<a target="_blank" rel="noopener" href="https://zhoujian.online/2024/05/16/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/">IDEA开发配置</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yay -S android-studio-for-platform </span><br></pre></td></tr></table></figure>
+
+<p>打开 ASFP 新建项目 -&gt; 指定 aosp 路径 -&gt; 完成等待缓存加载即可。<a target="_blank" rel="noopener" href="https://developer.android.com/studio/platform/projects/create-project">文档</a></p>
+<p>后续可以通过配置 <code>asfp-config.json</code> 添加模块进行同步，比如 <code>frameworks/base</code>,<code>packages/apps/Settings</code></p>
+<h2 id="四、Q-amp-A"><a href="#四、Q-amp-A" class="headerlink" title="四、Q&amp;A"></a>四、Q&amp;A</h2><p>暂无。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.serendipity.fit">zj970</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.serendipity.fit/2025/09/20/ArchLinux-AOSP-0/">https://www.serendipity.fit/2025/09/20/ArchLinux-AOSP-0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://www.serendipity.fit" target="_blank">落雪のBlog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a></div><div class="post-share"><div class="social-share" data-image="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17553037581602176.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/09/14/ArchLinuxSunshine/" title="ArchLinuxSunshine"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17165170649320832.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">ArchLinuxSunshine</div></div><div class="info-2"><div class="info-item-1">   前言 因为热爱，所以热爱    ArchLinux 扩展副屏&emsp;&emsp;为了体验鸿蒙系统上车华为平板，平时刷刷剧、看看书也是蛮不错的。最近总想着多屏幕耍电脑(之前买的DIY显示器坏了)，看着最近吃灰的平板，又是想着折腾 sunshine + moonlight (逛 github 时看到 MoonlightOH)。在 MoonlightOH 发现 Moonlight 已经适配上车，于是果断拿出平板开始折腾。 &emsp;&emsp;整个流程简单来说，识别额外的显示屏幕(诱骗器或软件模拟显示器)然后主机通过 sunshine 串流发送，客户端 moonlight 接收显示。当然其功能远远不止如此，不过对于我来说，作为副屏使用恰到好处(又省下一笔显示器费用😁)。 一、环境 Arch Linux  123456789101112131415161718192021neofetch                   -`                    zj970@HIGHFREEDOM                   .o+`              ...</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BActivityManagerService/" title="Android_14_源码分析之ActivityManagerService"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17367140004646272.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-13</div><div class="info-item-2">Android_14_源码分析之ActivityManagerService</div></div><div class="info-2"><div class="info-item-1"> 前序 一个人知道自己为什么而活，便能忍受任何一种生活      参考博客 厚雪长坡-ActivityTaskManagerService解析 LeeDuo-深入理解ActivityManagerService 芒果蒲公英-Android14 AMS启动流程 anly_jun-探索Activity之启动Intent Flag和taksAffinity menghaocheng-Android-AMS】ActivityManagerService启动分析 Sukai’s Blog  &emsp;&emsp;本文中的所有内容大部分来源于网络资料，如有侵权请联系本人修改或删除，请大家多多支持原创!非常感谢！ ActivityManagerService&emsp;&emsp;Android系统非常庞大、错综复杂，其底层是采用Linux作为基底，上层采用包含虚拟机的Java层以及Native层，通过系统调用(Syscall)连接系统的内核空间与用户空间。用户空间主要采用C++和Java代码，通过JNI技术打通用户空间的Java层和Native层(C&#x2F;C++)。Google官方提...</div></div></div></a><a class="pagination-related" href="/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BWindowManagerService/" title="Android_14_源码分析之WindowManagerService"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17367140004646272.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-13</div><div class="info-item-2">Android_14_源码分析之WindowManagerService</div></div><div class="info-2"><div class="info-item-1"> 前言    参考博客- &emsp;&emsp;本文中的所有内容大部分来源于网络资料，如有侵权请联系本人修改或删除，请大家多多支持原创!非常感谢！ WindowManagerServiceActivity与Window相关概念 Activity只负责生命周期和事件处理 window只控制视图 一个Activity包含一个Window，如果Activity没有Window，那就相当于Service AMS统一调度所有应用程序的Activity WMS控制所有Window的显示与隐藏以及要显示的位置  Window&emsp;&emsp;“Window” 表明它是和窗口相关的，”窗口“是一个抽象的概念，从用户的角度来讲，它是一个”界面“;从SurfaceFlinger的角度来看，它是一个Layer,承载着和界面有关的数据和属性;从WMS角度来看，它是一个WindowState，用于管理和界面有关的状态。  表示一个窗口的概念，是所有View的直接管理者，任何视图都通过Window呈现(点击事件由Window-&gt;DecorView-&gt;View;Activity的setCo...</div></div></div></a><a class="pagination-related" href="/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BPackageManagerService/" title="Android_14_源码分析之PackageManagerService"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17367140004646272.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-13</div><div class="info-item-2">Android_14_源码分析之PackageManagerService</div></div><div class="info-2"><div class="info-item-1"> 前言 背负着过去的痛苦，夹杂着现实的烦恼，对人的心灵而言是无任何益处的      参考博客 wise丰 冬子  &emsp;&emsp;本文中的所有内容大部分来源于网络资料，如有侵权请联系本人修改或删除，请大家多多支持原创!非常感谢！ PackageManagerService&emsp;&emsp;PackageManagerService(PMS)主要是管理应用的安装，卸载，更新，解析以及权限。同ActivityManagerService,PMS也是由SystemService孵化而来。   启动与初始化 frameworks&#x2F;base&#x2F;services&#x2F;java&#x2F;com&#x2F;android&#x2F;server&#x2F;SystemServer.java  12345678910111213141516171819202122232425262728//line 1234// Start the package manager.if (!mRuntimeRestart) &#123;    FrameworkStatsL...</div></div></div></a><a class="pagination-related" href="/2023/11/11/AndroidTv%E9%83%A8%E5%88%86%E9%A1%B5%E9%9D%A2%E6%8C%89%E9%94%AE%E9%9F%B3%E6%97%A0%E6%95%88/" title="AndroidTv部分页面按键音无效"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17367140004646272.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-11</div><div class="info-item-2">AndroidTv部分页面按键音无效</div></div><div class="info-2"><div class="info-item-1">  Android Tv 部分页面按键音无效，dispatchKeyEvent分发被拦截&emsp;&emsp;开始阅读之前，可以简单了解一下这些大佬的文章。    c枫_撸码的日子   Android 按键处理一 （基础知识） Android 按键处理二 （按键流程之内核层篇） Android 按键处理三 （按键流程之framework）   空杯的境界 Android 按键事件(KeyEvent)的分发机制   小羊子说 Android TV中按键事件和焦点处理总结   圆周率X Android dispatchKeyEvent事件分发详解，简单易懂    问题描述&emsp;&emsp;接入喇叭，进入应用，突然发现一些页面有系统调用的按键提示音，而有些页面则没有。(最终发现是使用了Scrollview出的bug) 问题分析&emsp;&emsp;既然按键声音没有发出，那首先需要了解一下按键声音是怎么发出的。当用户注册了clickListener，则调用发出playSoundEffect()和响应用户写好的onClick()方法。首先排除系统设置声音无效。可以使用adb命令 ...</div></div></div></a><a class="pagination-related" href="/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="Android_14_源码分析之启动流程"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17367140004646272.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-12-13</div><div class="info-item-2">Android_14_源码分析之启动流程</div></div><div class="info-2"><div class="info-item-1">   前序  &emsp;&emsp;时间从来不语，却回答了所有问题，岁月从来不言，却见证了所有努力，愿大家遇到困难时都能换乘机遇，踏歌而行时一往无前。 参考资料 Android Framework 开发揭秘  &emsp;&emsp;本文中的所有内容大部分来源于网络资料，如有侵权请联系本人修改或删除，请大家多多支持原创!非常感谢！ 简介&emsp;&emsp;Android 是一种基于 Linux 的开放源代码软件栈，为各类设备和机型而创建。  &emsp;&emsp;Android 平台的基础是Linux内核。例如，Android Runtime(ART)依靠Linux内核来执行底层功能，例如线程和底层内存管理。 Linux 内核 硬件抽象层(HAL)  HAL提供标准界面，向更高级的Java API 框架显示设备硬件功能。   Android Runtime  对于运行在Android 5.5(API 21)以上的设备，每个应用都有自己的ART实例并在其自己的进程中运行。 ART编写为通过执行DEX文件在低内存上运行多个虚拟机。 ART的功能包括 预先AOT和及时JIT，编...</div></div></div></a><a class="pagination-related" href="/2023/11/24/Android%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85-Java/" title="Android第三方网络框架封装-Java"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17367140004646272.webp" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2023-11-24</div><div class="info-item-2">Android第三方网络框架封装-Java</div></div><div class="info-2"><div class="info-item-1">Android第三方网络框架封装-Java 参考文章&#x2F;博主 苏火火 Android进阶： 详解OkHttp+Retrofit+Rxjava实现网络请求 RxJava2+Retrofit2+OkHttp3的基础、封装和项目中的使用    &emsp;&emsp;本文中的所有内容大部分来源于网络资料，如有侵权请联系本人修改或删除，请大家多多支持原创!非常感谢！ 1. 概述&emsp;&emsp;在Android开发中，网络请求是必不可少的一环。最近做了一个需求，类似于应用宝的功能，需要从服务器获取数据，然后展示到界面上。并下载apk文件，实现静默安装。本篇主要介绍自己是如何使用Rxjava、Retrofit、Okhttp等框架，实现网络请求和下载apk的功能。 1.1 OKHttp&emsp;&emsp;OkHttp是一个用于处理HTTP请求的开源Java库，由Square公司开发。对于网络框架，更多的人会想到volley，volley是Android系统自带的网络请求框架。但是volle在Android 5.0之后被Google抛弃了，所以OkHttp逐渐成为Androi...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://cdn.jsdelivr.net/gh/zj970/resource/personal/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">zj970</div><div class="author-info-description">谢谢你在世界的角落找到我</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">26</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/zj970"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">外向是生活所需，孤独是自我享受</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#AOSP-%E6%BA%90%E7%A0%81%E7%8E%AF%E5%A2%83"><span class="toc-number">1.</span> <span class="toc-text">AOSP 源码环境</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.</span> <span class="toc-text">一、目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.</span> <span class="toc-text">二、下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85-repo"><span class="toc-number">1.2.1.</span> <span class="toc-text">1、安装 repo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%9F%BA%E7%A1%80%E5%8C%85"><span class="toc-number">1.2.2.</span> <span class="toc-text">2、基础包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E9%80%89%E6%8B%A9%E5%88%86%E6%94%AF"><span class="toc-number">1.2.3.</span> <span class="toc-text">3、选择分支</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E4%B8%8B%E8%BD%BD%E9%A9%B1%E5%8A%A8%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6-%E5%8F%AF%E9%80%89"><span class="toc-number">1.2.4.</span> <span class="toc-text">4、下载驱动二进制文件(可选)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BC%96%E8%AF%91"><span class="toc-number">1.3.</span> <span class="toc-text">二、编译</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%BA%90%E7%A0%81%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.4.</span> <span class="toc-text">三、源码查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81Q-amp-A"><span class="toc-number">1.5.</span> <span class="toc-text">四、Q&amp;A</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/09/20/ArchLinux-AOSP-0/" title="AOSP 环境搭建"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17553037581602176.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="AOSP 环境搭建"/></a><div class="content"><a class="title" href="/2025/09/20/ArchLinux-AOSP-0/" title="AOSP 环境搭建">AOSP 环境搭建</a><time datetime="2025-09-20T14:41:49.000Z" title="发表于 2025-09-20 22:41:49">2025-09-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/09/14/ArchLinuxSunshine/" title="ArchLinuxSunshine"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17165170649320832.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ArchLinuxSunshine"/></a><div class="content"><a class="title" href="/2025/09/14/ArchLinuxSunshine/" title="ArchLinuxSunshine">ArchLinuxSunshine</a><time datetime="2025-09-13T17:55:33.000Z" title="发表于 2025-09-14 01:55:33">2025-09-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/04/Android%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" title="Android之渲染原理"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17367140004646272.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android之渲染原理"/></a><div class="content"><a class="title" href="/2025/06/04/Android%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/" title="Android之渲染原理">Android之渲染原理</a><time datetime="2025-06-03T16:33:51.000Z" title="发表于 2025-06-04 00:33:51">2025-06-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/05/25/Debug-JDB/" title="Debug 工具之 JDB"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17367140004646272.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Debug 工具之 JDB"/></a><div class="content"><a class="title" href="/2025/05/25/Debug-JDB/" title="Debug 工具之 JDB">Debug 工具之 JDB</a><time datetime="2025-05-25T11:24:20.000Z" title="发表于 2025-05-25 19:24:20">2025-05-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/12/31/%E7%A6%BB%E5%88%AB2024/" title="离别2024"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://gitee.com/zhou-jian1234/resource/raw/master/paper/comics/17367140004646272.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="离别2024"/></a><div class="content"><a class="title" href="/2024/12/31/%E7%A6%BB%E5%88%AB2024/" title="离别2024">离别2024</a><time datetime="2024-12-31T15:59:59.000Z" title="发表于 2024-12-31 23:59:59">2024-12-31</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2020 - 2025 By zj970</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'forest'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
