@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>https://www.serendipity.fit/2026/06/21/Android-9-%E5%BA%94%E7%94%A8%E5%90%AF%E5%8A%A8%E8%AF%A6%E8%A7%A3/</loc>
+    
+    <lastmod>2026-06-21</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2026/06/05/Android%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/</loc>
+    
+    <lastmod>2026-06-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2024/12/31/%E7%A6%BB%E5%88%AB2024/</loc>
+    
+    <lastmod>2026-01-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2025/09/20/ArchLinux-AOSP-0/</loc>
+    
+    <lastmod>2025-09-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2024/05/16/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/</loc>
+    
+    <lastmod>2025-09-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2025/09/14/ArchLinuxSunshine/</loc>
+    
+    <lastmod>2025-09-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2021/10/21/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/</loc>
+    
+    <lastmod>2025-09-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2024/03/04/%E4%BD%BF%E7%94%A8%E5%AE%98%E6%96%B9APi%E8%8E%B7%E5%8F%96Youtube%E8%A7%86%E9%A2%91%E8%B5%84%E6%BA%90/</loc>
+    
+    <lastmod>2025-09-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2024/10/03/%E5%A4%9C%E7%94%9F%E6%B4%BB/</loc>
+    
+    <lastmod>2025-09-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2024/03/04/%E6%B5%85%E8%B0%88%E5%9B%9B%E5%A4%A7%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/</loc>
+    
+    <lastmod>2025-09-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2024/11/17/%E8%91%AC%E9%80%81%E7%9A%84%E8%8A%99%E8%8E%89%E8%8E%B2/</loc>
+    
+    <lastmod>2025-09-14</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/tags/index.html</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/categories/index.html</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BActivityManagerService/</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BPackageManagerService/</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8BWindowManagerService/</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2023/12/13/Android-14-%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E4%B9%8B%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2023/11/27/AndroidTv%E9%81%A5%E6%8E%A7%E6%A8%A1%E6%8B%9F%E5%99%A8app/</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2023/12/01/AndroidTV%E9%81%A5%E6%8E%A7%E4%BB%A5%E5%8F%8A%E5%8D%8F%E8%AE%AE%E6%B5%85%E6%9E%90/</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2023/11/11/AndroidTv%E9%83%A8%E5%88%86%E9%A1%B5%E9%9D%A2%E6%8C%89%E9%94%AE%E9%9F%B3%E6%97%A0%E6%95%88/</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2024/08/17/Android%E4%B9%8BApk%E4%BC%98%E5%8C%96/</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2023/11/24/Android%E7%AC%AC%E4%B8%89%E6%96%B9%E7%BD%91%E7%BB%9C%E6%A1%86%E6%9E%B6%E5%B0%81%E8%A3%85-Java/</loc>
+    
+    <lastmod>2025-09-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2025/05/25/Debug-JDB/</loc>
+    
+    <lastmod>2025-05-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/about/index.html</loc>
+    
+    <lastmod>2024-07-31</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2021/07/29/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8BCamera/</loc>
+    
+    <lastmod>2024-07-29</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2024/03/11/Handler%E9%80%9A%E4%BF%A1%E6%9C%BA%E5%88%B6/</loc>
+    
+    <lastmod>2024-03-13</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/music/index.html</loc>
+    
+    <lastmod>2024-03-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/Gallery/index.html</loc>
+    
+    <lastmod>2024-03-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/link/index.html</loc>
+    
+    <lastmod>2024-03-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/movies/index.html</loc>
+    
+    <lastmod>2024-03-04</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2023/12/31/%E7%A6%BB%E5%88%AB2023/</loc>
+    
+    <lastmod>2024-01-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2022/12/31/%E7%A6%BB%E5%88%AB2022/</loc>
+    
+    <lastmod>2024-01-30</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2024/01/24/MVC-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/</loc>
+    
+    <lastmod>2024-01-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/2023/11/11/RecyclerView%E5%92%8CListView%E7%9A%84%E7%BC%93%E5%AD%98%E5%A4%8D%E7%94%A8%E6%9C%BA%E5%88%B6/</loc>
+    
+    <lastmod>2024-01-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+
+  <url>
+    <loc>https://www.serendipity.fit/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  
+  <url>
+    <loc>https://www.serendipity.fit/tags/%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/tags/aosp/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/tags/Android/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/tags/%E6%B8%B2%E6%9F%93/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/tags/%E5%8E%9F%E5%88%9B/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/tags/%E4%BA%BA%E7%94%9F/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+
+  
+  <url>
+    <loc>https://www.serendipity.fit/categories/Android/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/categories/AndroidTV/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/categories/Linux/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/categories/Framework/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.serendipity.fit/categories/Unity/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+</urlset>
