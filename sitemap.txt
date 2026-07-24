@@ -36,13 +36,13 @@ https://www.serendipity.fit/2023/11/11/RecyclerView%E5%92%8CListView%E7%9A%84%E7
 https://www.serendipity.fit/
 https://www.serendipity.fit/tags/%E7%AC%94%E8%AE%B0/
 https://www.serendipity.fit/tags/aosp/
-https://www.serendipity.fit/tags/Android/
-https://www.serendipity.fit/tags/%E6%B8%B2%E6%9F%93/
-https://www.serendipity.fit/tags/%E5%8E%9F%E5%88%9B/
-https://www.serendipity.fit/tags/%E4%BA%BA%E7%94%9F/
 https://www.serendipity.fit/tags/ai/
 https://www.serendipity.fit/tags/codex/
 https://www.serendipity.fit/tags/gpt/
+https://www.serendipity.fit/tags/%E4%BA%BA%E7%94%9F/
+https://www.serendipity.fit/tags/%E5%8E%9F%E5%88%9B/
+https://www.serendipity.fit/tags/Android/
+https://www.serendipity.fit/tags/%E6%B8%B2%E6%9F%93/
 https://www.serendipity.fit/categories/Android/
 https://www.serendipity.fit/categories/AndroidTV/
 https://www.serendipity.fit/categories/Linux/
