@@ -1,3 +1,5 @@
+https://www.serendipity.fit/2026/09/02/AI%E5%B7%A5%E7%A8%8B%E5%B8%88%E4%B8%8E%E6%9C%AA%E6%9D%A5%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%A8%A1%E5%BC%8F%E6%80%9D%E8%80%83/
+https://www.serendipity.fit/2025/09/14/ArchLinuxSunshine/
 https://www.serendipity.fit/2025/12/31/%E7%A6%BB%E5%88%AB2025/
 https://www.serendipity.fit/2024/12/31/%E7%A6%BB%E5%88%AB2024/
 https://www.serendipity.fit/2022/12/31/%E7%A6%BB%E5%88%AB2022/
@@ -7,7 +9,6 @@ https://www.serendipity.fit/2026/06/21/Android-9-%E5%BA%94%E7%94%A8%E5%90%AF%E5%
 https://www.serendipity.fit/2026/06/05/Android%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86/
 https://www.serendipity.fit/2025/09/20/ArchLinux-AOSP-0/
 https://www.serendipity.fit/2024/05/16/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE/
-https://www.serendipity.fit/2025/09/14/ArchLinuxSunshine/
 https://www.serendipity.fit/2021/10/21/Unity%E5%AD%A6%E4%B9%A0%E4%B9%8B%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/
 https://www.serendipity.fit/2024/03/04/%E4%BD%BF%E7%94%A8%E5%AE%98%E6%96%B9APi%E8%8E%B7%E5%8F%96Youtube%E8%A7%86%E9%A2%91%E8%B5%84%E6%BA%90/
 https://www.serendipity.fit/2024/10/03/%E5%A4%9C%E7%94%9F%E6%B4%BB/
@@ -35,15 +36,16 @@ https://www.serendipity.fit/movies/index.html
 https://www.serendipity.fit/2024/01/24/MVC-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/
 https://www.serendipity.fit/2023/11/11/RecyclerView%E5%92%8CListView%E7%9A%84%E7%BC%93%E5%AD%98%E5%A4%8D%E7%94%A8%E6%9C%BA%E5%88%B6/
 https://www.serendipity.fit/
+https://www.serendipity.fit/tags/%E6%80%9D%E8%80%83/
 https://www.serendipity.fit/tags/%E7%AC%94%E8%AE%B0/
-https://www.serendipity.fit/tags/aosp/
 https://www.serendipity.fit/tags/Android/
 https://www.serendipity.fit/tags/%E6%B8%B2%E6%9F%93/
-https://www.serendipity.fit/tags/%E5%8E%9F%E5%88%9B/
-https://www.serendipity.fit/tags/%E4%BA%BA%E7%94%9F/
+https://www.serendipity.fit/tags/aosp/
 https://www.serendipity.fit/tags/ai/
 https://www.serendipity.fit/tags/codex/
 https://www.serendipity.fit/tags/gpt/
+https://www.serendipity.fit/tags/%E5%8E%9F%E5%88%9B/
+https://www.serendipity.fit/tags/%E4%BA%BA%E7%94%9F/
 https://www.serendipity.fit/categories/Android/
 https://www.serendipity.fit/categories/AndroidTV/
 https://www.serendipity.fit/categories/Linux/
