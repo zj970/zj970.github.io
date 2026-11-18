@@ -1,0 +1,1 @@
+#solar-ambient{position:fixed;display:block;z-index:1;pointer-events:none;user-select:none;overflow:hidden;contain:strict}#solar-ambient[hidden],.read-mode #solar-ambient,.read-mode#solar-ambient{display:none!important}@media (max-width:999px),(prefers-reduced-motion:reduce){#solar-ambient{display:none!important}}@media print{#solar-ambient{display:none!important}}
